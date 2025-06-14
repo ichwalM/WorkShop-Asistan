@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <ul id="list">
+        <li>list 1</li>
+        <li>list 2</li>
+    </ul>
+
+    <button id="klik">klik</button>
+
+    <script>
+        const list = document.getElementById('list');
+        const addList = document.createElement('li');
+        addList.innerHTML='list 3';
+        list.appendChild(addList)
+
+        document.getElementById('klik').addEventListener('mouseHover',function(e){
+            list.style.color='red'
+        })
+    </script>
+</body>
+</html>
