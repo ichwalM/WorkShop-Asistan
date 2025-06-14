@@ -1,0 +1,34 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>variable css</title>
+    <style>
+        :root {
+            --primary-color: #3498db;
+            --secondary-color: #2ecc71;
+            --text-color: #ffffff;
+            --font-size: 20px;
+            --container-display: grid;
+            --container-grid-template-columns: repeat(4, 1fr);
+            --container-gap: 10px;
+            --container-padding: 10px;
+            --container-background-color: var(--primary-color);
+            --container-font-size: var(--font-size);
+        }
+
+        .container {
+            display: var(--container-display);
+            grid-template-columns: var(--container-grid-template-columns);
+            gap: var(--container-gap);
+            padding: var(--container-padding);
+            background-color: var(--container-background-color);
+            font-size: var(--container-font-size);
+        }
+    </style>
+</head>
+<body>
+    <div class="container">Hellow world</div>
+</body>
+</html>
