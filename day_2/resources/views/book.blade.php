@@ -19,7 +19,7 @@
                 <tr>
                     <td>{{ $item->id }}</td>
                     <td>{{ $item->name }}</td>
-                    <td>{{ $item->user_id }}</td>
+                    <td>{{ $item->user->name }}</td>
                 </tr>
             @endforeach
         </tbody>
