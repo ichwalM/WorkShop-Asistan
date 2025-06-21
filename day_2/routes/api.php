@@ -11,3 +11,5 @@ Route::get('/user', function (Request $request) {
 
 Route::get('/list-user', [LatihanController::class, 'index']);
 Route::post('/book',[BookController::class, 'store']);
+Route::get('/book',[BookController::class, 'index']);
+Route::get('/get-user',[BookController::class, 'getUser']);
