@@ -13,11 +13,9 @@ struct Mahasiswa{
         this->name=name;
     }
 };
-
 bool compare(Mahasiswa m1, Mahasiswa m2){
 	return m1.stb < m2.stb;
 }
-
 int main(){
     int data;
     string stb,name;
