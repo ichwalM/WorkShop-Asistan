@@ -1,12 +1,19 @@
 #include <iostream>
 using namespace std;
 
+void tampil(int i){
+    if(i==0) return;
+    cout<<"*"<<" ";
+    tampil(i-1);
+}
+
 void deret(int x){
     if(x==0){
         return;
     }else{
+        // for(int i=0;i<x;i++)cout<<"*"<<" ";
         deret(x-1);
-        for(int i=0;i<x;i++)cout<<"*"<<" ";
+        tampil(x);
         cout<<endl;
     }
 }

@@ -14,6 +14,7 @@ int terkecil(int ary[],int lenght){
     return tmp;
 }
 
+
 int terbesar(int ary[],int lenght){
     int tmp = ary[0];
     for(int i=0;i<lenght;i++){
