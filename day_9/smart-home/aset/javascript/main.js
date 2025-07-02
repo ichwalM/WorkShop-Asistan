@@ -109,7 +109,6 @@ function sendToArduino(device, state) {
     // 3. Menggunakan MQTT broker
 
     // Contoh dengan fetch API:
-    /*
     fetch('/api/control', {
         method: 'POST',
         headers: {
@@ -129,7 +128,6 @@ function sendToArduino(device, state) {
         console.error('Error:', error);
         updateConnectionStatus(false);
     });
-    */
 }
 
 // Update status koneksi
