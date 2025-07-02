@@ -2,24 +2,18 @@
 #include <WebServer.h>     
 #include <DHT.h>           
 
-
-const char* ssid_ap = "SmartHomeESP32"; 
-const char* password_ap = "smarthome123"; 
-
+const char* ssid_ap = "UMI Connect"; 
+const char* password_ap = "umiukhuwah"; 
 
 const int LED_LIVING_ROOM_PIN = 2; 
-                                   
 const int DHT_PIN = 4;             
 #define DHTTYPE DHT11              
 
 DHT dht(DHT_PIN, DHTTYPE); 
 
-
 WebServer server(80); 
 
-
 bool lampLivingRoomState = false; 
-
 
 void handleRoot() {
   String html = "<html><head><title>ESP32 Smart Home API</title></head><body>";
@@ -44,8 +38,6 @@ void handleRoot() {
   server.send(200, "text/html", html);
 }
 
-
-
 void handleLivingRoomLight() {
   String responseMessage = "";
   if (server.hasArg("state")) { 
@@ -66,15 +58,12 @@ void handleLivingRoomLight() {
       return; 
     }
     
-    
     server.send(200, "application/json", "{\"status\":\"success\", \"message\":\"" + responseMessage + "\", \"device\":\"livingRoom\", \"state\":" + (lampLivingRoomState ? "true" : "false") + "}");
   } else {
     responseMessage = "Parameter 'state' tidak ditemukan. Contoh: /api/light/livingroom?state=on";
     server.send(400, "application/json", "{\"status\":\"error\", \"message\":\"" + responseMessage + "\"}");
   }
 }
-
-
 
 void handleSensorData() {
   float h = dht.readHumidity();
@@ -115,18 +104,15 @@ void setup() {
   IPAddress IP = WiFi.softAPIP();
   Serial.print("Access Point IP address: ");
   Serial.println(IP);
-
   
   server.on("/", HTTP_GET, handleRoot); 
   server.on("/api/light/livingroom", HTTP_GET, handleLivingRoomLight); 
   server.on("/api/sensors", HTTP_GET, handleSensorData); 
 
-  
   DefaultHeaders::Instance().addHeader("Access-Control-Allow-Origin", "*");
   DefaultHeaders::Instance().addHeader("Access-Control-Allow-Methods", "GET, POST, OPTIONS");
   DefaultHeaders::Instance().addHeader("Access-Control-Allow-Headers", "Content-Type");
 
-  
   server.onNotFound([](){
     if (server.method() == HTTP_OPTIONS) {
       server.sendHeader("Access-Control-Allow-Origin", "*");
