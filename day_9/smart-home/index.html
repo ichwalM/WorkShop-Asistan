@@ -1,0 +1,153 @@
+<!DOCTYPE html>
+<html lang="id">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Smart Home Dashboard</title>
+    <link rel="stylesheet" href="./aset/css/styles.css">
+</head>
+
+<body>
+    <div class="container">
+        <div class="header">
+            <h1>🏠 Smart Home Dashboard</h1>
+            <p>Kontrol perangkat IoT Anda dengan mudah</p>
+        </div>
+
+        <div class="connection-status">
+            <span class="connection-indicator"></span>
+            <span id="connectionStatus">Terhubung ke Arduino</span>
+        </div>
+
+        <div class="dashboard">
+            <!-- Lampu -->
+            <div class="card">
+                <div class="status-indicator" id="lightStatus"></div>
+                <h3><span class="icon">💡</span> Kontrol Lampu</h3>
+
+                <div class="device-item">
+                    <div class="device-info">
+                        <div class="device-name">Lampu Ruang Tamu</div>
+                        <div class="device-status status-off" id="livingRoomStatus">Mati</div>
+                    </div>
+                    <div class="toggle-switch" onclick="toggleDevice('livingRoom')"></div>
+                </div>
+
+                <div class="device-item">
+                    <div class="device-info">
+                        <div class="device-name">Lampu Kamar Tidur</div>
+                        <div class="device-status status-off" id="bedroomStatus">Mati</div>
+                    </div>
+                    <div class="toggle-switch" onclick="toggleDevice('bedroom')"></div>
+                </div>
+
+                <div class="device-item">
+                    <div class="device-info">
+                        <div class="device-name">Lampu Dapur</div>
+                        <div class="device-status status-off" id="kitchenStatus">Mati</div>
+                    </div>
+                    <div class="toggle-switch" onclick="toggleDevice('kitchen')"></div>
+                </div>
+
+                <div class="controls">
+                    <button class="btn" onclick="turnAllLights('off')">Matikan Semua</button>
+                    <button class="btn primary" onclick="turnAllLights('on')">Nyalakan Semua</button>
+                </div>
+            </div>
+
+            <!-- Kipas -->
+            <div class="card">
+                <div class="status-indicator offline" id="fanStatus"></div>
+                <h3><span class="icon">🌀</span> Kontrol Kipas</h3>
+
+                <div class="device-item">
+                    <div class="device-info">
+                        <div class="device-name">Kipas Ruang Tamu</div>
+                        <div class="device-status status-off" id="fanLivingStatus">Mati</div>
+                    </div>
+                    <div class="toggle-switch" onclick="toggleDevice('fanLiving')"></div>
+                </div>
+
+                <div class="device-item">
+                    <div class="device-info">
+                        <div class="device-name">Kipas Kamar</div>
+                        <div class="device-status status-off" id="fanBedroomStatus">Mati</div>
+                    </div>
+                    <div class="toggle-switch" onclick="toggleDevice('fanBedroom')"></div>
+                </div>
+            </div>
+
+            <!-- Sensor Suhu -->
+            <div class="card">
+                <div class="status-indicator" id="tempStatus"></div>
+                <h3><span class="icon">🌡️</span> Sensor Suhu</h3>
+
+                <div class="sensor-value">
+                    <span id="temperature">24</span><span class="sensor-unit">°C</span>
+                </div>
+                <div class="progress-bar">
+                    <div class="progress-fill" style="width: 48%" id="tempProgress"></div>
+                </div>
+                <p style="color: white; text-align: center; margin-top: 10px; opacity: 0.8;">
+                    Status: <span id="tempCondition">Normal</span>
+                </p>
+            </div>
+
+            <!-- Sensor Kelembaban -->
+            <div class="card">
+                <div class="status-indicator" id="humidityStatus"></div>
+                <h3><span class="icon">💧</span> Sensor Kelembaban</h3>
+
+                <div class="sensor-value">
+                    <span id="humidity">65</span><span class="sensor-unit">%</span>
+                </div>
+                <div class="progress-bar">
+                    <div class="progress-fill" style="width: 65%" id="humidityProgress"></div>
+                </div>
+                <p style="color: white; text-align: center; margin-top: 10px; opacity: 0.8;">
+                    Status: <span id="humidityCondition">Ideal</span>
+                </p>
+            </div>
+
+            <!-- Pintu Garasi -->
+            <div class="card">
+                <div class="status-indicator offline" id="garageStatus"></div>
+                <h3><span class="icon">🚪</span> Pintu Garasi</h3>
+
+                <div class="device-item">
+                    <div class="device-info">
+                        <div class="device-name">Status Pintu</div>
+                        <div class="device-status status-off" id="doorStatus">Tertutup</div>
+                    </div>
+                </div>
+
+                <div class="controls">
+                    <button class="btn" onclick="controlGarage('close')">Tutup</button>
+                    <button class="btn primary" onclick="controlGarage('open')">Buka</button>
+                </div>
+            </div>
+
+            <!-- Keamanan -->
+            <div class="card">
+                <div class="status-indicator" id="securityStatus"></div>
+                <h3><span class="icon">🔒</span> Sistem Keamanan</h3>
+
+                <div class="device-item">
+                    <div class="device-info">
+                        <div class="device-name">Alarm Sistem</div>
+                        <div class="device-status status-off" id="alarmStatus">Nonaktif</div>
+                    </div>
+                    <div class="toggle-switch" onclick="toggleDevice('alarm')"></div>
+                </div>
+
+                <div class="controls">
+                    <button class="btn" onclick="emergencyMode()">Mode Darurat</button>
+                </div>
+            </div>
+        </div>
+    </div>
+    <script src="./aset/javascript/main.js"></script>
+</body>
+
+</html>

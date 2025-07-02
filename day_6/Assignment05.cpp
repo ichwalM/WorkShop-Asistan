@@ -117,6 +117,29 @@ void remove(int data){
 void pop(){
 	removeFront();
 }
+
+void decrement(){
+	if(head==NULL)return;
+	x = head;
+	Node *y = tail;
+	while(y != head){
+		while(x->next != y){
+			x = x->next;
+		}
+		y = x;
+		cout << x->data << " ";
+		x = head;
+	}cout << x->data;
+}
+
+void tampilDariBelakang(Node* current) {
+    if (current == NULL) {
+        return;
+    }
+    tampilDariBelakang(current->next);
+    cout << current->data << " ";
+}
+
 int main(){
     push(6);
     push(4);
@@ -125,6 +148,23 @@ int main(){
     push(8);
     push(5);
 	remove(10);
-    cout<<"Setelah di add:\n";
+    cout<<"Ascending \t: ";
     tampil();
+	cout<<"\nDescending \t: ";
+	decrement();
+
+	for (int i = 0; i < 500; i++)
+	{
+		if (i%5==3)
+		{
+			push(i);
+		}
+		
+	}
+	cout<<"\nDebungging testing dsc: ";
+	tampil();
+	cout<<"\nDebungging testing dsc: ";
+	decrement();
+	
+
 }
